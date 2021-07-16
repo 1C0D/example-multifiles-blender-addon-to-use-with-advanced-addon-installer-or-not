@@ -1,0 +1,1 @@
+# example-multifiles-blender-addon-to-use-with-advanced-addon-installer-or-not
