@@ -8,9 +8,9 @@ bl_info = {
     "category": "Object"
 }
 
-debug = 0 # 0 (ON) or 1 (OFF)
+debug = 0 # 0 (ON) / 1 (OFF) or any value
 
-modules = ("op", "panel") # the "modules" there you need to import/reload (if debug ON)/register/unregister 
+modules = ("op", "panel") # "modules" you need to import/reload(debug ON)/register/unregister 
 
 for mod in modules:
     try:
