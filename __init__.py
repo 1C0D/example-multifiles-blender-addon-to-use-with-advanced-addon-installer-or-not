@@ -18,6 +18,9 @@ for mod in modules:
     except Exception as e:
         print(e)
 
+# using my addon you can rid off all try except, because it's already dealing with errors.
+# but if installing a zip with blender. without any try except the error (like a wrong name of module imported)
+# the error become silent. the addon is installed but you can't enable it. the console telling: addon not found :)
 
 def register():
    
