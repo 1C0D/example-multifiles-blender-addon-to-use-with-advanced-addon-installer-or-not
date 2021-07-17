@@ -14,7 +14,7 @@ modules = ("op", "panel") # "modules" you need to import/reload(debug ON)/regist
 
 for mod in modules:
     try:
-        exec("from . import {mod}".format(mod=mod))
+        exec(f"from . import {mod}")
     except Exception as e:
         print(e)
 
@@ -25,8 +25,8 @@ def register():
     for mod in modules:
         try:
             if debug:
-                exec("importlib.reload({mod})".format(mod=mod))
-            exec("{mod}.register()".format(mod=mod))
+                exec(f"importlib.reload({mod})")
+            exec(f"{mod}.register()")
         except Exception as e:
             print(e)
 
@@ -34,7 +34,6 @@ def unregister():
 
     for mod in modules:
         try:
-            exec("{mod}.unregister()".format(mod=mod))
+            exec(f"{mod}.unregister()")
         except Exception as e:
             print(e)
-
