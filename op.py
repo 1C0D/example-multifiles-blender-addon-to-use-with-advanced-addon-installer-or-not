@@ -1,7 +1,6 @@
 import bpy
 from .utils import ChangeName
-
-debug = 1 ## 
+from .__init__ import debug #to get the value of debug
 
 class SimpleOperator(bpy.types.Operator):
     """Tooltip"""
