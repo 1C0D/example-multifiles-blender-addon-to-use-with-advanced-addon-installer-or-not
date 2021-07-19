@@ -12,6 +12,14 @@ debug = 1 # 1 (ON) / 0 (OFF) or any value
 
 modules = ("op", "panel") # "modules" you need to import/reload(debug ON)/register/unregister 
 
+if debug:
+    if "bpy" in locals():
+        import importlib
+
+        for module in modules:
+            if module in locals():
+                importlib.reload(locals()[module])
+
 for mod in modules:
     try:
         exec(f"from . import {mod}")
