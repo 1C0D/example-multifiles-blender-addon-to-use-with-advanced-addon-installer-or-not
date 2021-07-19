@@ -1,42 +1,32 @@
-import sys
-
 bl_info = {
     "name": "bbb",
     "author": "bbb",
-    "blender": (2, 80, 0),
-    "version": (0, 0, 1),
+    "blender": (2, 93, 0),
+    "version": (0, 1, 1),
     "category": "Object"
 }
 
+
 debug = 1 # 1 (ON) / 0 (OFF) or any value
 
-modules = ("op", "panel") # "modules" you need to import/reload(debug ON)/register/unregister
+modules = ("op", "panel") # "modules" you need to import/reload/register/unregister 
+#"utils" is imported in "op" module, see the reload there
 
 for mod in modules:
-    try:
-        exec(f"from . import {mod}")
-    except Exception as e:
-        print(e)
+    exec(f"from . import {mod}")
 
-# using my addon you can rid off all try except, because it's already dealing with errors.
-# but if installing a zip with blender. without any try except the error (like a wrong name of module imported)
-# the error become silent. the addon is installed but you can't enable it. the console telling: addon not found :)
 
 def register():
-   
+
     import importlib
     for mod in modules:
-        try:
-            if debug:
-                exec(f"importlib.reload({mod})")
-            exec(f"{mod}.register()")
-        except Exception as e:
-            print(e)
+        if debug:
+        # if mod in locals(): # not working there
+            exec(f"importlib.reload({mod})")
+        exec(f"{mod}.register()")
+
 
 def unregister():
 
     for mod in modules:
-        try:
-            exec(f"{mod}.unregister()")
-        except Exception as e:
-            print(e)
+        exec(f"{mod}.unregister()".format(mod=mod))
