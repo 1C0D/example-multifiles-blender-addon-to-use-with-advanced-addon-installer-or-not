@@ -29,4 +29,4 @@ def register():
 def unregister():
 
     for mod in modules:
-        exec(f"{mod}.unregister()".format(mod=mod))
+        exec(f"{mod}.unregister()")
